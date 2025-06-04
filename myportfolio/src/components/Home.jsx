@@ -17,8 +17,7 @@ const Home = () => {
           Currently, I'm focused on building responsive full-stack web applications.
         </p>
         <div>
-          <Link to="work" smooth={true} duration={500}>
-            <button className='text-white group border-2 px-6 py-3 my-2 flex items-center hover:bg-secondary hover:border-secondary hover:text-primary'>
+          <Link to="work" smooth={true} duration={500}>            <button className='text-textLight group border-2 border-textLight px-6 py-3 my-2 flex items-center hover:bg-secondary hover:border-secondary hover:text-primary'>
               View Work
               <span className='group-hover:rotate-90 duration-300'>
                 <HiArrowNarrowRight className='ml-3' />
