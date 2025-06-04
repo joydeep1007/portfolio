@@ -1,3 +1,21 @@
+# My Portfolio Website
+
+A modern, responsive portfolio website built with React.js to showcase my projects, skills, and professional experience.
+
+## Project Overview
+- Clean and minimalist design
+- Responsive layout for all devices
+- Built with React.js
+- Sections for About, Projects, Skills, and Contact
+- Easy to customize and maintain
+
+## Technologies Used
+- React.js
+- HTML5/CSS3
+- JavaScript (ES6+)
+- React Router
+- CSS Modules/Styled Components
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
