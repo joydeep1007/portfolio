@@ -55,13 +55,13 @@ const Footer = () => {
                 </a>
               </li>
               <li className='py-2'>
-                <a href='https://github.com' target='_blank' rel='noreferrer'
+                <a href='https://github.com/joydeep1007' target='_blank' rel='noreferrer'
                    className='flex items-center hover:text-secondary'>
                   <FaGithub className='mr-2' /> GitHub
                 </a>
               </li>
               <li className='py-2'>
-                <a href='mailto:example@email.com'
+                <a href='joydeep102004@gmail.com'
                    className='flex items-center hover:text-secondary'>
                   <HiOutlineMail className='mr-2' /> Email
                 </a>
@@ -78,9 +78,9 @@ const Footer = () => {
           {/* Contact Info */}
           <div>
             <h3 className='text-2xl font-bold text-secondary mb-4'>Contact Info</h3>
-            <p className='py-2'>Location: Your City, Country</p>
-            <p className='py-2'>Email: example@email.com</p>
-            <p className='py-2'>Phone: +1 234 567 8900</p>
+            <p className='py-2'>Location: Kolkata, India</p>
+            <p className='py-2'>Email: joydeep102004@gmail.com</p>
+            <p className='py-2'>Phone: +91 9163805618</p>
           </div>
         </div>
 

@@ -22,7 +22,7 @@ const Work = () => {
       id: 3,
       name: "Portfolio Website",
       image: WorkImg,
-      codeLink: "https://github.com/yourusername/project3",
+      codeLink: "https://github.com/joydeep1007/portfolio.git",
       description: "Personal portfolio website"
     },
     {
