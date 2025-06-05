@@ -40,10 +40,10 @@ const Work = () => {
     },
     {
       id: 6,
-      name: "Task Management",
+      name: "Text to voice generator",
       image: WorkImg,
-      codeLink: "https://github.com/yourusername/project6",
-      description: "Project management tool"
+      codeLink: "https://github.com/joydeep1007/text-to-voice-generator.git",
+      description: "Text-to-speech application using javascript in built api"
     }
   ];
 
