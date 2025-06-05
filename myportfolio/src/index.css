@@ -53,3 +53,47 @@
 .content-div:hover .opacity-0 {
     transition-delay: 0.1s;
 }
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes typing {
+    0%, 100% {
+        width: 0;
+    }
+    20%, 80% {
+        width: 100%;
+    }
+}
+
+.slide-in {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.slide-in.visible {
+    animation: slideIn 1s ease forwards;
+}
+
+.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--color-secondary);
+    animation: typing 8s infinite, blink 1s step-end infinite;
+    width: 0;
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
