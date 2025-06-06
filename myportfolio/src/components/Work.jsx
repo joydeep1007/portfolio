@@ -1,5 +1,7 @@
 import React from 'react';
 import WorkImg from '../assets/projects/workImg.jpeg';
+import DrowsyImg from '../assets/projects/drowsy.png';
+import ResumeImg from '../assets/projects/resume.png';
 import { useTheme } from '../context/ThemeContext';
 
 const Work = () => {
@@ -15,7 +17,7 @@ const Work = () => {
     {
       id: 2,
       name: "Drowseiness- detection",
-      image: WorkImg,
+      image: DrowsyImg,
       codeLink: "https://github.com/joydeep1007/drowsiness_detection-app.git",
       description: "Drowsiness detection system using computer vision"
     },    {
@@ -34,7 +36,7 @@ const Work = () => {
     },    {
       id: 5,
       name: "Resume- Optimizer",
-      image: WorkImg,
+      image: ResumeImg,
       codeLink: "https://github.com/joydeep1007/resume_optimizer.git",
       description: "Resume optimization tool using AI"
     },
