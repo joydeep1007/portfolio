@@ -6,7 +6,7 @@ const Home = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const targetElement = sectionRef.current; // Store ref value
+    const targetElement = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -29,20 +29,21 @@ const Home = () => {
   }, []);
 
   return (
-    <div name='home' className='w-full h-screen bg-primary'>
+    <div name='home' className='w-full h-screen bg-primary pt-[80px] md:pt-0'>
       {/* Container */}
-      <div ref={sectionRef} className='max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-full slide-in'>
-        <p className='text-secondary'>Hi, my name is</p>
-        <h1 className='text-4xl sm:text-7xl font-bold text-textLight'>
+      <div ref={sectionRef} className='max-w-[1000px] mx-auto px-4 sm:px-8 flex flex-col justify-center h-[calc(100vh-80px)] md:h-screen slide-in'>
+        <p className='text-secondary text-lg sm:text-xl'>Hi, my name is</p>
+        <h1 className='text-3xl sm:text-5xl md:text-7xl font-bold text-textLight mt-2'>
           <span className='typewriter'>Joydeep De</span>
         </h1>
-        <h2 className='text-4xl sm:text-7xl font-bold text-textDark'>
+        <h2 className='text-2xl sm:text-4xl md:text-7xl font-bold text-textDark mt-4'>
           I'm a Full Stack Developer.
         </h2>
-        <p className='text-textDark py-4 max-w-[700px]'>
+        <p className='text-textDark py-4 max-w-[700px] text-base sm:text-lg'>
           I'm a full-stack developer specializing in building exceptional digital experiences.
           Currently, I'm focused on building responsive full-stack web applications.
-        </p>        <div>
+        </p>
+        <div className='mt-4'>
           <Link to="work" smooth={true} duration={500}>
             <button className='text-textLight group border-2 border-textLight px-6 py-3 my-2 flex items-center hover:border-secondary relative'>
               <span className='relative z-10'>View Work</span>
