@@ -27,6 +27,16 @@
         @apply px-4;
         @apply cursor-pointer;
     }
+  
+  html, body {
+    @apply overflow-x-hidden;
+    @apply w-full;
+    @apply min-h-screen;
+  }
+  
+  #root {
+    @apply min-h-screen;
+  }
 }
 
 .content-div {

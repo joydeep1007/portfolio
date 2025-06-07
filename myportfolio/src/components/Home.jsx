@@ -29,9 +29,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div name='home' className='w-full h-screen bg-primary pt-[80px] md:pt-0'>
+    <div name='home' className='w-full h-screen pt-[80px] md:pt-0'>
       {/* Container */}
-      <div ref={sectionRef} className='max-w-[1000px] mx-auto px-4 sm:px-8 flex flex-col justify-center h-[calc(100vh-80px)] md:h-screen slide-in'>
+      <div ref={sectionRef} className='max-w-[1000px] mx-auto px-4 flex flex-col justify-center h-full'>
         <p className='text-secondary text-lg sm:text-xl'>Hi, my name is</p>
         <h1 className='text-3xl sm:text-5xl md:text-7xl font-bold text-textLight mt-2'>
           <span className='typewriter'>Joydeep De</span>
