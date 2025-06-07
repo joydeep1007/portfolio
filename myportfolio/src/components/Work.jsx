@@ -14,7 +14,7 @@ const Work = () => {
       id: 1,
       name: "NN from scratch",
       image: NeuralImg,
-      codeLink: "https://github.com/yourusername/project1",
+      codeLink: "https://github.com/joydeep1007/NN-from-scratch.git",
       description: "Neural Network implementation from scratch using Python"
     },
     {
