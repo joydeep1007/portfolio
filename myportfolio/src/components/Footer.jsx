@@ -85,7 +85,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className={`text-center pt-8 mt-8 border-t ${isDarkMode ? 'border-gray-600' : 'border-gray-200'}`}>
-          <p>&copy; {new Date().getFullYear()} Your Portfolio. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Joydeep's Portfolio. All rights reserved.</p>
         </div>
       </div>
     </footer>
