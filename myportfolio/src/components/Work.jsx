@@ -1,9 +1,10 @@
 import React from 'react';
-import WorkImg from '../assets/projects/workImg.jpeg';
 import DrowsyImg from '../assets/projects/drowsy.png';
 import ResumeImg from '../assets/projects/resume.png';
 import ChatImg from '../assets/projects/chat.png';
 import PortImg from '../assets/projects/port.png';
+import ConverterImg from '../assets/projects/converter.png';
+import NeuralImg from '../assets/projects/neural.png';
 import { useTheme } from '../context/ThemeContext';
 
 const Work = () => {
@@ -11,10 +12,10 @@ const Work = () => {
   const projects = [
     {
       id: 1,
-      name: "React JS Application",
-      image: WorkImg,
+      name: "NN from scratch",
+      image: NeuralImg,
       codeLink: "https://github.com/yourusername/project1",
-      description: "A full-stack React application"
+      description: "Neural Network implementation from scratch using Python"
     },
     {
       id: 2,
@@ -45,7 +46,7 @@ const Work = () => {
     {
       id: 6,
       name: "Text to voice generator",
-      image: WorkImg,
+      image: ConverterImg,
       codeLink: "https://github.com/joydeep1007/text-to-voice-generator.git",
       description: "Text-to-speech application using javascript in built api"
     }
