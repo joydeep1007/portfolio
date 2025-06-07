@@ -2,6 +2,8 @@ import React from 'react';
 import WorkImg from '../assets/projects/workImg.jpeg';
 import DrowsyImg from '../assets/projects/drowsy.png';
 import ResumeImg from '../assets/projects/resume.png';
+import ChatImg from '../assets/projects/chat.png';
+import PortImg from '../assets/projects/port.png';
 import { useTheme } from '../context/ThemeContext';
 
 const Work = () => {
@@ -23,14 +25,14 @@ const Work = () => {
     },    {
       id: 3,
       name: "Portfolio Website",
-      image: WorkImg,
+      image: PortImg,
       codeLink: "https://github.com/joydeep1007/portfolio.git",
       description: "Personal portfolio website"
     },
     {
       id: 4,
       name: "Simple chat app using socket.io",
-      image: WorkImg,
+      image: ChatImg,
       codeLink: "https://github.com/joydeep1007/chat_app-using-python.git",
       description: "Real-time chat application using Socket.IO"
     },    {
