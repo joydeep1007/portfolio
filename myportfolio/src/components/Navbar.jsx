@@ -116,17 +116,15 @@ const Navbar = () => {
             <a className='flex justify-between items-center w-full text-gray-300 px-4'
                href='https://github.com/joydeep1007'>
               GitHub <FaGithub size={30} className='animate-pulse' />
-            </a>
-          </li>
-          <li className='w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#6fc2b0] hover:bg-[#5fa396] hover:shadow-lg transform hover:scale-105'>
+            </a>          </li>          <li className='w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#6fc2b0] hover:bg-[#5fa396] hover:shadow-lg transform hover:scale-105'>
             <a className='flex justify-between items-center w-full text-gray-300 px-4'
-               href='joydeep102004@gmail.com'>
+               href='mailto:joydeep102004@gmail.com'>
               Email <HiOutlineMail size={30} className='animate-bounce' />
             </a>
           </li>
           <li className='w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#565f69] hover:bg-[#4a525a] hover:shadow-lg transform hover:scale-105'>
             <a className='flex justify-between items-center w-full text-gray-300 px-4'
-               href='/resume.pdf'>
+               href='https://docs.google.com/document/d/1NcBy3GrK06XteTAIZrKDjBP-hexy6e3Z/edit?usp=sharing&ouid=108353958671612217925&rtpof=true&sd=true'>
               Resume <BsFillPersonLinesFill size={30} className='animate-pulse' />
             </a>
           </li>

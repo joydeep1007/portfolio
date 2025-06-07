@@ -59,15 +59,14 @@ const Footer = () => {
                    className='flex items-center hover:text-secondary'>
                   <FaGithub className='mr-2' /> GitHub
                 </a>
-              </li>
-              <li className='py-2'>
-                <a href='joydeep102004@gmail.com'
+              </li>              <li className='py-2'>
+                <a href='mailto:joydeep102004@gmail.com'
                    className='flex items-center hover:text-secondary'>
                   <HiOutlineMail className='mr-2' /> Email
                 </a>
               </li>
               <li className='py-2'>
-                <a href='/resume.pdf' target='_blank' rel='noreferrer'
+                <a href='https://docs.google.com/document/d/1NcBy3GrK06XteTAIZrKDjBP-hexy6e3Z/edit?usp=sharing&ouid=108353958671612217925&rtpof=true&sd=true' target='_blank' rel='noreferrer'
                    className='flex items-center hover:text-secondary'>
                   <BsFillPersonLinesFill className='mr-2' /> Resume
                 </a>
