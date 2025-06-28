@@ -29,7 +29,8 @@ const Navbar = () => {
       {/* menu */}
       <div className='hidden md:flex items-center'>
         <ul className='hidden md:flex mr-4'>
-          <li className='relative group px-4'>            <Link to='home' smooth={true} duration={500} offset={-80} className='hover:text-[var(--color-secondary)] transition-colors duration-300'>Home</Link>
+          <li className='relative group px-4'>            
+            <Link to='home' smooth={true} duration={500} offset={-80} className='hover:text-[var(--color-secondary)] transition-colors duration-300'>Home</Link>
             <span className='absolute left-0 bottom-[-4px] w-full h-[2px] bg-[var(--color-secondary)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300'></span>
           </li>
           <li className='relative group px-4'>
@@ -42,6 +43,10 @@ const Navbar = () => {
           </li>
           <li className='relative group px-4'>
             <Link to='work' smooth={true} duration={500} offset={-80} className='hover:text-[var(--color-secondary)] transition-colors duration-300'>Work</Link>
+            <span className='absolute left-0 bottom-[-4px] w-full h-[2px] bg-[var(--color-secondary)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300'></span>
+          </li>
+          <li className='relative group px-4'>
+            <Link to='certifications' smooth={true} duration={500} offset={-80} className='hover:text-[var(--color-secondary)] transition-colors duration-300'>Certifications</Link>
             <span className='absolute left-0 bottom-[-4px] w-full h-[2px] bg-[var(--color-secondary)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300'></span>
           </li>
           <li className='relative group px-4'>
@@ -83,6 +88,9 @@ const Navbar = () => {
         </li>
         <li className='py-6 text-4xl hover:text-[var(--color-secondary)]'>
           <Link onClick={handleClick} to='work' smooth={true} duration={500} offset={-80}>Work</Link>
+        </li>
+        <li className='py-6 text-4xl hover:text-[var(--color-secondary)]'>
+          <Link onClick={handleClick} to='certifications' smooth={true} duration={500} offset={-80}>Certifications</Link>
         </li>
         <li className='py-6 text-4xl hover:text-[var(--color-secondary)]'>
           <Link onClick={handleClick} to='contact' smooth={true} duration={500} offset={-80}>Contact</Link>
