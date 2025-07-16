@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from '../context/ThemeContext';
+import infosysLogo from '../assets/certifications/infosys.png';
 
 const Certifications = () => {
   const { isDarkMode } = useTheme();
@@ -7,24 +8,45 @@ const Certifications = () => {
   const certifications = [
     {
       id: 1,
-      name: "Machine Learning Specialization",
-      issuer: "Coursera - Stanford University",
-      date: "2023",
-      link: "https://www.coursera.org/account/accomplishments/specialization/certificate/XXXXX"
+      name: "Intro to Data Science",
+      issuer: "Infosys Springboard",
+      date: "2025",
+      link: "https://drive.google.com/file/d/1lRwwWm3ihfrLkjnRt89M3BHM-S0xGw2t/view?usp=sharing"
     },
     {
       id: 2,
-      name: "Deep Learning Specialization",
-      issuer: "Coursera - DeepLearning.AI",
-      date: "2023",
-      link: "https://www.coursera.org/account/accomplishments/specialization/certificate/XXXXX"
+      name: "Introduction to Robotic Process Automation",
+      issuer: "Infosys Springboard",
+      date: "2025",
+      link: "https://drive.google.com/file/d/1B0GEn1AMbF52zOJBsWhW0jTVB3G4XWix/view?usp=sharing"
     },
     {
       id: 3,
-      name: "React - The Complete Guide",
-      issuer: "Udemy",
-      date: "2023",
-      link: "https://www.udemy.com/certificate/XXXXX"
+      name: "Introduction to Deep Learning",
+      issuer: "Infosys Springboard",
+      date: "2025",
+      link: "https://drive.google.com/file/d/1j8wxeMG5txQ3-YCwd83wbhVrSzxTXxR3/view?usp=sharing"
+    },
+    {
+      id: 4,
+      name: "Introduction to AI",
+      issuer: "Infosys Springboard",
+      date: "2025",
+      link: "https://drive.google.com/file/d/1z2D2uoiPtBxgBiQUF6M_z6Ej48KQfvA-/view?usp=sharing"
+    },
+    {
+      id: 5,
+      name: "Introduction to NLP",
+      issuer: "Infosys Springboard",
+      date: "2025",
+      link: "https://drive.google.com/file/d/1gQr20YPVZnGNSjdvsWrVcX325bv0l0Zm/view?usp=sharing"
+    },
+    {
+      id: 6,
+      name: "Cmputer Vision 101",
+      issuer: "Infosys Springboard",
+      date: "2025",
+      link: "https://drive.google.com/file/d/1uTXYe9CVO1fh4V5HJ8JCRt3mRcU7904Z/view?usp=sharing"
     }
   ];
 
@@ -42,20 +64,33 @@ const Certifications = () => {
           {certifications.map((cert) => (
             <div
               key={cert.id}
-              className={`p-6 ${isDarkMode ? 'bg-[#0a192f] shadow-[#040c16]' : 'bg-white shadow-gray-400'} 
-              rounded-lg shadow-md hover:scale-105 duration-500`}
+              className={`relative p-6 ${isDarkMode ? 'bg-[#0a192f] shadow-[#040c16]' : 'bg-white shadow-gray-400'} 
+              rounded-lg shadow-md hover:scale-105 duration-500 overflow-hidden group`}
             >
-              <h3 className='text-xl font-bold mb-2'>{cert.name}</h3>
-              <p className='text-[var(--color-text-dark)] mb-2'>{cert.issuer}</p>
-              <p className='text-[var(--color-secondary)] mb-4'>{cert.date}</p>
-              <a
-                href={cert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className='text-[var(--color-secondary)] hover:underline'
-              >
-                View Certificate →
-              </a>
+              {/* Background overlay for better text readability */}
+              <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:backdrop-blur-sm transition-all duration-300"></div>
+              
+              {/* Content overlay */}
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className='text-xl font-bold flex-1'>{cert.name}</h3>
+                  <img 
+                    src={infosysLogo} 
+                    alt="Infosys" 
+                    className="w-8 h-8 ml-2 opacity-70"
+                  />
+                </div>
+                <p className='text-[var(--color-text-dark)] mb-2'>{cert.issuer}</p>
+                <p className='text-[var(--color-secondary)] mb-4'>{cert.date}</p>
+                <a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className='text-[var(--color-secondary)] hover:underline'
+                >
+                  View Certificate →
+                </a>
+              </div>
             </div>
           ))}
         </div>
