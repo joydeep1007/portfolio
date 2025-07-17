@@ -49,7 +49,7 @@ const Footer = () => {
             <h3 className='text-2xl font-bold text-secondary mb-4'>Connect</h3>
             <ul>
               <li className='py-2'>
-                <a href='https://linkedin.com' target='_blank' rel='noreferrer' 
+                <a href='https://www.linkedin.com/in/joydeep-de-b2519a28a/' target='_blank' rel='noreferrer' 
                    className='flex items-center hover:text-secondary'>
                   <FaLinkedin className='mr-2' /> LinkedIn
                 </a>

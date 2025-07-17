@@ -116,7 +116,7 @@ const Navbar = () => {
         <ul>
           <li className='w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-blue-600 hover:bg-blue-700 hover:shadow-lg transform hover:scale-105'>
             <a className='flex justify-between items-center w-full text-gray-300 px-4'
-               href='https://linkedin.com'>
+               href='https://www.linkedin.com/in/joydeep-de-b2519a28a/'>
               LinkedIn <FaLinkedin size={30} className='animate-bounce' />
             </a>
           </li>

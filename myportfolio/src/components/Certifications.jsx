@@ -43,7 +43,7 @@ const Certifications = () => {
     },
     {
       id: 6,
-      name: "Cmputer Vision 101",
+      name: "Computer Vision 101",
       issuer: "Infosys Springboard",
       date: "2025",
       link: "https://drive.google.com/file/d/1uTXYe9CVO1fh4V5HJ8JCRt3mRcU7904Z/view?usp=sharing"
