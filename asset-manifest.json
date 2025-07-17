@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.c4c90e69.css",
-    "main.js": "/static/js/main.d979a1ac.js",
+    "main.css": "/static/css/main.c706c9f1.css",
+    "main.js": "/static/js/main.bb6a2889.js",
     "static/js/453.83234151.chunk.js": "/static/js/453.83234151.chunk.js",
     "static/media/converter.png": "/static/media/converter.f407d72f9ca91d11c92f.png",
     "static/media/resume.png": "/static/media/resume.9e8b56a78573133771d1.png",
@@ -9,6 +9,7 @@
     "static/media/about.png": "/static/media/about.27bc648e28de449deed7.png",
     "static/media/drowsy.png": "/static/media/drowsy.98c93601c407203d1e7f.png",
     "static/media/neural.png": "/static/media/neural.a40ee39cb09a00f949d1.png",
+    "static/media/IBM.png": "/static/media/IBM.028fe970217b751528e9.png",
     "static/media/joy.jpg": "/static/media/joy.53a542a04fab89026d4b.jpg",
     "static/media/port.png": "/static/media/port.45a3764dc4e9c0bf6c86.png",
     "static/media/react.png": "/static/media/react.0cf951a69d8e58f83f9d.png",
@@ -21,12 +22,12 @@
     "static/media/infosys.png": "/static/media/infosys.823fff8b97e78b1543db.png",
     "static/media/javascript.png": "/static/media/javascript.1ccd6ef9bb1f9c84ef00.png",
     "index.html": "/index.html",
-    "main.c4c90e69.css.map": "/static/css/main.c4c90e69.css.map",
-    "main.d979a1ac.js.map": "/static/js/main.d979a1ac.js.map",
+    "main.c706c9f1.css.map": "/static/css/main.c706c9f1.css.map",
+    "main.bb6a2889.js.map": "/static/js/main.bb6a2889.js.map",
     "453.83234151.chunk.js.map": "/static/js/453.83234151.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c4c90e69.css",
-    "static/js/main.d979a1ac.js"
+    "static/css/main.c706c9f1.css",
+    "static/js/main.bb6a2889.js"
   ]
 }
