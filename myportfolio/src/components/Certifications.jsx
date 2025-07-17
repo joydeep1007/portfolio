@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTheme } from '../context/ThemeContext';
 import infosysLogo from '../assets/certifications/infosys.png';
+import ibmLogo from '../assets/certifications/IBM.png';
 
 const Certifications = () => {
   const { isDarkMode } = useTheme();
@@ -29,10 +30,10 @@ const Certifications = () => {
     },
     {
       id: 4,
-      name: "Introduction to AI",
-      issuer: "Infosys Springboard",
+      name: "Getting Started with AI",
+      issuer: "IBM SkillsBuild",
       date: "2025",
-      link: "https://drive.google.com/file/d/1z2D2uoiPtBxgBiQUF6M_z6Ej48KQfvA-/view?usp=sharing"
+      link: "https://drive.google.com/file/d/1wdnokNHEUQ3H8RW6mqYlVrfawN8-01Qr/view?usp=sharing"
     },
     {
       id: 5,
@@ -75,9 +76,9 @@ const Certifications = () => {
                 <div className="flex items-center justify-between mb-2">
                   <h3 className='text-xl font-bold flex-1'>{cert.name}</h3>
                   <img 
-                    src={infosysLogo} 
-                    alt="Infosys" 
-                    className="w-8 h-8 ml-2 opacity-70"
+                    src={cert.issuer.includes('IBM') ? ibmLogo : infosysLogo} 
+                    alt={cert.issuer.includes('IBM') ? 'IBM' : 'Infosys'} 
+                    className={`w-8 h-8 ml-2 ${cert.issuer.includes('IBM') ? 'bg-white rounded p-1 opacity-100 contrast-125 brightness-75' : 'opacity-70'}`}
                   />
                 </div>
                 <p className='text-[var(--color-text-dark)] mb-2'>{cert.issuer}</p>
