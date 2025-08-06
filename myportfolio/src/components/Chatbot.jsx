@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import joy1 from '../assets/joy1.png';
 
 const Chatbot = () => {
@@ -8,75 +7,22 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([
     { 
       type: 'bot', 
-      text: "Hi! I'm Joydeep's AI portfolio assistant powered by Google Gemini. Ask me anything about his skills, projects, certifications, or experience!" 
+      text: "Hi! I'm Joydeep's portfolio assistant. Ask me anything about his skills, projects, certifications, or experience!" 
     }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef(null);
 
-  // Initialize Google Gemini AI
-  const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
-
-  // Comprehensive portfolio knowledge base for AI context
-  const portfolioContext = `
-    You are an AI assistant for Joydeep De's portfolio website. You should answer questions about him in a friendly, professional manner. Here's comprehensive information about Joydeep:
-
-    PERSONAL INFO:
-    - Name: Joydeep De
-    - Email: joydeep102004@gmail.com
-    - Currently a B.Tech student
-    - Passionate about technology, cybersecurity, and artificial intelligence
-
-    TECHNICAL SKILLS:
-    - Programming Languages: Python, C, JavaScript
-    - Web Development: React, HTML, CSS, Full-stack Development
-    - AI/ML: Machine Learning, Deep Learning, Natural Language Processing, Computer Vision
-    - Specializations: Cybersecurity, Image Processing, Intelligent Systems
-    - Tools & Technologies: Git, Tailwind CSS, Framer Motion
-
-    CERTIFICATIONS (All from 2025):
-    1. Intro to Data Science - Infosys Springboard
-    2. Introduction to Robotic Process Automation - Infosys Springboard  
-    3. Introduction to Deep Learning - Infosys Springboard
-    4. Getting Started with AI - IBM SkillsBuild
-    5. Introduction to NLP - Infosys Springboard
-    6. Computer Vision 101 - Infosys Springboard
-
-    PROJECT EXPERIENCE:
-    - Built this portfolio website using React with modern animations and responsive design
-    - Developed machine learning models and AI applications
-    - Created image processing systems and computer vision projects
-    - Worked on cybersecurity projects and network security
-    - Built intelligent systems that solve real-world problems
-
-    INTERESTS & FOCUS AREAS:
-    - Cybersecurity and ethical hacking
-    - Artificial Intelligence and Machine Learning
-    - Cutting-edge technology innovations
-    - Building user-friendly applications
-    - Continuous learning and skill development
-
-    PORTFOLIO FEATURES:
-    - Responsive design with dark/light theme toggle
-    - Animated components using Framer Motion
-    - Contact form integration
-    - Professional certification showcase
-    - Skills demonstration with interactive elements
-
-    CAREER GOALS:
-    - Becoming a full-stack developer with AI expertise
-    - Contributing to cybersecurity innovations
-    - Building impactful technology solutions
-
-    Instructions for responses:
-    - Be friendly, professional, and informative
-    - Provide specific details when asked about skills or projects
-    - Encourage visitors to contact Joydeep if they're interested in collaboration
-    - Keep responses concise but comprehensive
-    - Highlight his unique combination of AI, cybersecurity, and web development skills
-    - If asked about something not in the portfolio, be honest and suggest contacting him directly
-  `;
+  // Predefined responses for portfolio questions
+  const predefinedResponses = {
+    skills: "Joydeep's main technical skills include Python, C, JavaScript, React, HTML, CSS, Machine Learning, Deep Learning, Natural Language Processing, Computer Vision, Cybersecurity, and Image Processing. He's also proficient with Git, Tailwind CSS, and Framer Motion.",
+    certifications: "Joydeep has earned 6 certifications in 2025: Intro to Data Science (Infosys), Introduction to RPA (Infosys), Introduction to Deep Learning (Infosys), Getting Started with AI (IBM), Introduction to NLP (Infosys), and Computer Vision 101 (Infosys).",
+    projects: "Joydeep has built this portfolio website using React with modern animations, developed machine learning models and AI applications, created image processing systems, worked on cybersecurity projects, and built intelligent systems that solve real-world problems.",
+    contact: "You can contact Joydeep at joydeep102004@gmail.com. He's always interested in collaboration opportunities, especially in AI/ML, cybersecurity, and full-stack development projects.",
+    unique: "What makes Joydeep unique is his combination of AI/ML expertise, cybersecurity knowledge, and full-stack development skills. As a B.Tech student, he's passionate about cutting-edge technology and building user-friendly applications.",
+    default: "Thanks for your question! Joydeep is a skilled B.Tech student specializing in AI/ML, cybersecurity, and full-stack development. Feel free to explore his portfolio or contact him at joydeep102004@gmail.com for more information!"
+  };
 
   // Quick suggestion buttons
   const quickSuggestions = [
@@ -87,18 +33,21 @@ const Chatbot = () => {
     "What makes him unique as a developer?"
   ];
 
-  const generateAIResponse = async (userMessage) => {
-    try {
-      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-      
-      const prompt = `${portfolioContext}\n\nUser Question: ${userMessage}\n\nPlease provide a helpful response about Joydeep De based on the portfolio information above:`;
-      
-      const result = await model.generateContent(prompt);
-      const response = await result.response;
-      return response.text();
-    } catch (error) {
-      console.error('Gemini AI Error:', error);
-      return "I'm having trouble connecting to my AI service right now. But I can tell you that Joydeep is a skilled developer with expertise in Python, React, AI/ML, and cybersecurity. Feel free to contact him directly at joydeep102004@gmail.com!";
+  const generateResponse = (userMessage) => {
+    const message = userMessage.toLowerCase();
+    
+    if (message.includes('skill') || message.includes('technical') || message.includes('programming') || message.includes('language')) {
+      return predefinedResponses.skills;
+    } else if (message.includes('certification') || message.includes('certificate') || message.includes('course')) {
+      return predefinedResponses.certifications;
+    } else if (message.includes('project') || message.includes('work') || message.includes('experience')) {
+      return predefinedResponses.projects;
+    } else if (message.includes('contact') || message.includes('email') || message.includes('collaboration') || message.includes('hire')) {
+      return predefinedResponses.contact;
+    } else if (message.includes('unique') || message.includes('special') || message.includes('different')) {
+      return predefinedResponses.unique;
+    } else {
+      return predefinedResponses.default;
     }
   };
 
@@ -111,19 +60,13 @@ const Chatbot = () => {
     setInputValue('');
     setIsTyping(true);
 
-    try {
-      const aiResponse = await generateAIResponse(currentInput);
-      const botMessage = { type: 'bot', text: aiResponse };
+    // Simulate API delay for better UX
+    setTimeout(() => {
+      const response = generateResponse(currentInput);
+      const botMessage = { type: 'bot', text: response };
       setMessages(prev => [...prev, botMessage]);
-    } catch (error) {
-      const errorMessage = { 
-        type: 'bot', 
-        text: "I apologize for the technical difficulty. Please try asking about Joydeep's skills, projects, or contact information!" 
-      };
-      setMessages(prev => [...prev, errorMessage]);
-    } finally {
       setIsTyping(false);
-    }
+    }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
   };
 
   const handleSuggestionClick = (suggestion) => {
@@ -189,8 +132,8 @@ const Chatbot = () => {
                   />
                 </div>
                 <div>
-                  <h3 className="font-bold text-sm">AI Portfolio Assistant</h3>
-                  <p className="text-xs opacity-90">Powered by Google Gemini</p>
+                  <h3 className="font-bold text-sm">Portfolio Assistant</h3>
+                  <p className="text-xs opacity-90">Ask me about Joydeep's skills & projects</p>
                 </div>
               </div>
             </div>
@@ -294,7 +237,7 @@ const Chatbot = () => {
                 </motion.button>
               </div>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
-                Powered by Google Gemini AI
+                Interactive Portfolio Assistant
               </p>
             </div>
           </motion.div>
