@@ -8,6 +8,7 @@ import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingButton from './components/FloatingButton';
+import Chatbot from './components/Chatbot';
 import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Contact />
         <Footer />
         <FloatingButton />
+        <Chatbot />
       </div>
     </ThemeProvider>
   );
