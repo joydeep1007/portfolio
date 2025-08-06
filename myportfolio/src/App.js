@@ -7,6 +7,7 @@ import Work from './components/Work';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import FloatingButton from './components/FloatingButton';
 import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Certifications />
         <Contact />
         <Footer />
+        <FloatingButton />
       </div>
     </ThemeProvider>
   );
