@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import infosysLogo from '../assets/certifications/infosys.png';
 import ibmLogo from '../assets/certifications/IBM.png';
 
-const Certifications = () => {
+const Certifications = memo(() => {
   const { isDarkMode } = useTheme();
   
   const certifications = [
@@ -98,6 +98,6 @@ const Certifications = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Certifications;
