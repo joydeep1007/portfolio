@@ -132,7 +132,7 @@ const Navbar = () => {
           </li>
           <li className='w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#565f69] hover:bg-[#4a525a] hover:shadow-lg transform hover:scale-105'>
             <a className='flex justify-between items-center w-full text-gray-300 px-4'
-               href='https://docs.google.com/document/d/1NcBy3GrK06XteTAIZrKDjBP-hexy6e3Z/edit?usp=sharing&ouid=108353958671612217925&rtpof=true&sd=true'>
+               href='https://drive.google.com/file/d/1RWygs-X5SDv0lgwSfl06AvJ69x3iM6Lh/view?usp=sharing'>
               Resume <BsFillPersonLinesFill size={30} className='animate-pulse' />
             </a>
           </li>

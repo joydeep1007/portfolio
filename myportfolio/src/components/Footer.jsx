@@ -66,7 +66,7 @@ const Footer = () => {
                 </a>
               </li>
               <li className='py-2'>
-                <a href='https://docs.google.com/document/d/1NcBy3GrK06XteTAIZrKDjBP-hexy6e3Z/edit?usp=sharing&ouid=108353958671612217925&rtpof=true&sd=true' target='_blank' rel='noreferrer'
+                <a href='https://drive.google.com/file/d/1RWygs-X5SDv0lgwSfl06AvJ69x3iM6Lh/view?usp=sharing' target='_blank' rel='noreferrer'
                    className='flex items-center hover:text-secondary'>
                   <BsFillPersonLinesFill className='mr-2' /> Resume
                 </a>
