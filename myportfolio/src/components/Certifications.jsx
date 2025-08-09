@@ -53,7 +53,7 @@ const Certifications = memo(() => {
 
   return (
     <div name='certifications' className='w-full md:h-screen bg-[var(--color-primary)] text-[var(--color-text-light)]'>
-      <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
+      <div className='max-w-[1200px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
         <div className='pb-8'>
           <p className='text-4xl font-bold inline border-b-4 border-[var(--color-secondary)]'>
             Certifications
@@ -61,11 +61,13 @@ const Certifications = memo(() => {
           <p className='py-6 text-[var(--color-text-dark)]'>These are my recent certifications and achievements</p>
         </div>
 
-        <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-4'>
+        <div 
+          className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch auto-rows-fr'
+        >
           {certifications.map((cert) => (
             <div
               key={cert.id}
-              className={`relative p-6 ${isDarkMode ? 'bg-[#0a192f] shadow-[#040c16]' : 'bg-white shadow-gray-400'} 
+              className={`relative p-6 w-full min-w-0 ${isDarkMode ? 'bg-[#0a192f] shadow-[#040c16]' : 'bg-white shadow-gray-400'} 
               rounded-lg shadow-md hover:scale-105 duration-500 overflow-hidden group`}
             >
               {/* Background overlay for better text readability */}

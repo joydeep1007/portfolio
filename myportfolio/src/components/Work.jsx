@@ -54,7 +54,7 @@ const Work = () => {
 
   return (
     <div name='work' className='w-full md:h-screen bg-[var(--color-primary)] text-[var(--color-text-light)]'>
-      <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
+      <div className='max-w-[1200px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
         <div className='pb-8'>
           <p className='text-4xl font-bold inline border-b-4 border-[var(--color-secondary)]'>
             Work
@@ -62,14 +62,14 @@ const Work = () => {
           <p className='py-6 text-[var(--color-text-dark)]'>Check out some of my recent work</p>
         </div>
 
-        {/* Container for projects */}
-        <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-4'>
+  {/* Container for projects */}
+  <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch auto-rows-fr'>
           {/* Project Items */}
           {projects.map((project) => (
             <div
               key={project.id}
               style={{ backgroundImage: `url(${project.image})` }}
-              className={`shadow-lg ${isDarkMode ? 'shadow-[#040c16]' : 'shadow-gray-400'} group container rounded-md flex justify-center items-center mx-auto content-div`}
+              className={`shadow-lg ${isDarkMode ? 'shadow-[#040c16]' : 'shadow-gray-400'} group rounded-md flex justify-center items-center w-full min-w-0 content-div`}
             >
               {/* Hover Effects */}
               <div className='opacity-0 group-hover:opacity-100 text-center'>

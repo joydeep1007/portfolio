@@ -12,10 +12,10 @@ const Contact = () => {
     setSubmitStatus('');
 
     emailjs.sendForm(
-      'service_bescma4',     // Replace with your EmailJS service ID
-      'template_dkedrhf',    // Replace with your EmailJS template ID
+      process.env.REACT_APP_EMAILJS_SERVICE_ID,     // EmailJS service ID from .env
+      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,    // EmailJS template ID from .env
       form.current,
-      'ntgImIMD9krSTtJ43'      // Replace with your EmailJS public key
+      process.env.REACT_APP_EMAILJS_PUBLIC_KEY      // EmailJS public key from .env
     )
     .then((result) => {
       console.log('SUCCESS!', result.text);
