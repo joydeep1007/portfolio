@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import joy1 from '../assets/joy1.png';
 
 const Chatbot = () => {
@@ -7,22 +8,51 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([
     { 
       type: 'bot', 
-      text: "Hi! I'm Joydeep's portfolio assistant. Ask me anything about his skills, projects, certifications, or experience!" 
+      text: "Hi! I'm Joydeep's portfolio assistant powered by Gemini AI. Ask me anything about his skills, projects, certifications, or experience!" 
     }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [sessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
   const messagesEndRef = useRef(null);
 
-  // Predefined responses for portfolio questions
-  const predefinedResponses = {
-    skills: "Joydeep's main technical skills include Python, C, JavaScript, React, HTML, CSS, Machine Learning, Deep Learning, Natural Language Processing, Computer Vision, Cybersecurity, and Image Processing. He's also proficient with Git, Tailwind CSS, and Framer Motion.",
-    certifications: "Joydeep has earned 6 certifications in 2025: Intro to Data Science (Infosys), Introduction to RPA (Infosys), Introduction to Deep Learning (Infosys), Getting Started with AI (IBM), Introduction to NLP (Infosys), and Computer Vision 101 (Infosys).",
-    projects: "Joydeep has built this portfolio website using React with modern animations, developed machine learning models and AI applications, created image processing systems, worked on cybersecurity projects, and built intelligent systems that solve real-world problems.",
-    contact: "You can contact Joydeep at joydeep102004@gmail.com. He's always interested in collaboration opportunities, especially in AI/ML, cybersecurity, and full-stack development projects.",
-    unique: "What makes Joydeep unique is his combination of AI/ML expertise, cybersecurity knowledge, and full-stack development skills. As a B.Tech student, he's passionate about cutting-edge technology and building user-friendly applications.",
-    default: "Thanks for your question! Joydeep is a skilled B.Tech student specializing in AI/ML, cybersecurity, and full-stack development. Feel free to explore his portfolio or contact him at joydeep102004@gmail.com for more information!"
-  };
+  // Initialize Gemini AI
+  const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+
+  // Portfolio context for better responses
+  const portfolioContext = `You are Joydeep's portfolio assistant. Here's information about Joydeep:
+
+  ABOUT JOYDEEP:
+  - B.Tech student specializing in AI/ML, cybersecurity, and full-stack development
+  - Email: joydeep102004@gmail.com
+  - Passionate about cutting-edge technology and building user-friendly applications
+
+  TECHNICAL SKILLS:
+  - Core: Python, C, JavaScript, SQL, Unix/Linux
+  - Web Development: HTML, CSS, React, Tailwind CSS, Node.js
+  - AI/ML: Python, NumPy, Pandas, scikit-learn, TensorFlow, OpenCV
+  - Databases: MySQL, MongoDB, SQLite, PostgreSQL
+  - DevOps: Git, GitHub, Docker, CI/CD, AWS (Basics), Vercel/Netlify
+  - Other: Data Structures & Algorithms, OOP, REST APIs, Socket Programming, Cybersecurity, NLP/CV
+
+  CERTIFICATIONS (2025):
+  1. Intro to Data Science (Infosys)
+  2. Introduction to RPA (Infosys)
+  3. Introduction to Deep Learning (Infosys)
+  4. Getting Started with AI (IBM)
+  5. Introduction to NLP (Infosys)
+  6. Computer Vision 101 (Infosys)
+
+  PROJECTS:
+  - Portfolio website (React, Tailwind CSS, Framer Motion)
+  - Chat Application (Real-time with Socket.io)
+  - Currency Converter (Live exchange rates)
+  - Drowsiness Detection (AI-powered with computer vision)
+  - Neural Network Visualizer (Interactive ML tool)
+  - Resume Builder (Dynamic with multiple templates)
+
+  Always respond as Joydeep's helpful assistant. Be conversational, informative, and encourage visitors to explore his portfolio or contact him for collaboration.`;
 
   // Quick suggestion buttons
   const quickSuggestions = [
@@ -33,21 +63,40 @@ const Chatbot = () => {
     "What makes him unique as a developer?"
   ];
 
-  const generateResponse = (userMessage) => {
-    const message = userMessage.toLowerCase();
-    
-    if (message.includes('skill') || message.includes('technical') || message.includes('programming') || message.includes('language')) {
-      return predefinedResponses.skills;
-    } else if (message.includes('certification') || message.includes('certificate') || message.includes('course')) {
-      return predefinedResponses.certifications;
-    } else if (message.includes('project') || message.includes('work') || message.includes('experience')) {
-      return predefinedResponses.projects;
-    } else if (message.includes('contact') || message.includes('email') || message.includes('collaboration') || message.includes('hire')) {
-      return predefinedResponses.contact;
-    } else if (message.includes('unique') || message.includes('special') || message.includes('different')) {
-      return predefinedResponses.unique;
-    } else {
-      return predefinedResponses.default;
+  // Generate AI response using Gemini
+  const generateAIResponse = async (userMessage) => {
+    try {
+      const prompt = `${portfolioContext}\n\nUser question: ${userMessage}\n\nPlease provide a helpful, conversational response about Joydeep's portfolio:`;
+      
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      return response.text();
+    } catch (error) {
+      console.error('Gemini AI error:', error);
+      return "I apologize, but I'm having trouble connecting to my AI service right now. Please feel free to explore Joydeep's portfolio directly or contact him at joydeep102004@gmail.com for any specific questions!";
+    }
+  };
+
+  // Send conversation to backend
+  const saveConversation = async (userMessage, botResponse) => {
+    try {
+      const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      
+      await fetch(`${API_BASE}/api/chatbot/message`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sessionId,
+          userMessage,
+          botResponse,
+          timestamp: new Date().toISOString(),
+        }),
+      });
+      
+      console.log('[Chatbot] Conversation saved to backend');
+    } catch (error) {
+      console.error('[Chatbot] Failed to save conversation:', error);
+      // Don't show error to user - this is background logging
     }
   };
 
@@ -60,13 +109,26 @@ const Chatbot = () => {
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate API delay for better UX
-    setTimeout(() => {
-      const response = generateResponse(currentInput);
+    try {
+      // Generate AI response using Gemini
+      const response = await generateAIResponse(currentInput);
       const botMessage = { type: 'bot', text: response };
+      
       setMessages(prev => [...prev, botMessage]);
+      
+      // Save conversation to backend (don't wait for completion)
+      saveConversation(currentInput, response);
+      
+    } catch (error) {
+      console.error('Chat error:', error);
+      const errorMessage = { 
+        type: 'bot', 
+        text: "I apologize, but I'm experiencing some technical difficulties. Please feel free to explore Joydeep's portfolio or contact him directly at joydeep102004@gmail.com!" 
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
       setIsTyping(false);
-    }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
+    }
   };
 
   const handleSuggestionClick = (suggestion) => {
