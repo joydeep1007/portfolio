@@ -5,9 +5,7 @@ node_modules
 /node_modules
 **/node_modules
 
-# Package files
-package-lock.json
-package.json
+
 
 # testing
 /coverage
