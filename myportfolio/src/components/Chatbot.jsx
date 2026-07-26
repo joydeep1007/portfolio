@@ -80,7 +80,7 @@ const Chatbot = () => {
   // Send conversation to backend
   const saveConversation = async (userMessage, botResponse) => {
     try {
-      const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      const API_BASE = process.env.REACT_APP_API_URL || '';
       
       await fetch(`${API_BASE}/api/chatbot/message`, {
         method: 'POST',
