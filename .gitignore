@@ -26,6 +26,3 @@ yarn-error.log*
 
 
 
-# Config files
-*.config.js
-config.js
