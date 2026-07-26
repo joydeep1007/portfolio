@@ -32,9 +32,9 @@ app.use(
 const mongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/contactDB';
 mongoose
   .connect(mongoUri)
-  .then(() => console.log('✅ Connected to MongoDB:', mongoUri))
+  .then(() => console.log('✅ Connected to MongoDB:',))
   .catch((err) => {
-    console.error('❌ MongoDB connection error:', err.message);
+    console.error(' MongoDB connection error:', err.message);
     process.exit(1);
   });
 
