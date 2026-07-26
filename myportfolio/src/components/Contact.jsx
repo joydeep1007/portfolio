@@ -24,8 +24,7 @@ const Contact = () => {
     console.log('[Contact] submit started');
 
     try {
-      // 1) Send email via EmailJS (frontend)
-      // Ensure your EmailJS template expects: user_name, user_email, message
+      // 1) Send email via EmailJS (frontend) - PRIMARY success condition
       const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
       const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
       const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
@@ -34,49 +33,54 @@ const Contact = () => {
         throw new Error('Missing EmailJS environment variables.');
       }
 
-      // You can use send() or sendForm(). Using send() with explicit params here:
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          user_name: name.trim(),
-          user_email: email.trim(),
-          message: message.trim(),
-        },
-        { publicKey }
-      );
-
-      console.log('[Contact] EmailJS send: success');
-
-      // 2) Save to backend (MongoDB)
+      // Prepare payload before form reset
       const payload = {
         name: name.trim(),
         email: email.trim(),
         message: message.trim(),
       };
 
-      const res = await fetch(`${API_BASE}/api/contact`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          user_name: payload.name,
+          user_email: payload.email,
+          message: payload.message,
+        },
+        { publicKey }
+      );
 
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data?.success) {
-        console.error('[Contact] Backend save failed:', data);
-        throw new Error(data?.message || 'Failed to save message in backend.');
-      }
+      console.log('[Contact] EmailJS send: success');
 
-      console.log('[Contact] Backend save: success', data);
-
-      // Success: reset form
+      // EmailJS succeeded → submission is now SUCCESSFUL
       setStatus('success');
       setName('');
       setEmail('');
       setMessage('');
       formRef.current?.reset();
+
+      // 2) Optionally save to backend (MongoDB) - best-effort, non-blocking
+      try {
+        const res = await fetch(`${API_BASE}/api/contact`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data?.success) {
+          console.warn('[Contact] Backend save failed (non-critical):', data);
+        } else {
+          console.log('[Contact] Backend save: success', data);
+        }
+      } catch (backendErr) {
+        console.warn('[Contact] Backend unavailable (email sent successfully):', backendErr);
+      }
+
     } catch (err) {
-      console.error('[Contact] submit error:', err);
+      // Only EmailJS failures reach here
+      console.error('[Contact] EmailJS send error:', err);
       setStatus('error');
       setErrorMsg(err?.message || 'Something went wrong.');
     } finally {
